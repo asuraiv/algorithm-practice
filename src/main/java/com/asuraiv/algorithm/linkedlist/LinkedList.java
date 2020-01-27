@@ -6,8 +6,8 @@ public class LinkedList<T> {
 
 	public void add(T value) {
 
-		if(head == null) {
-			head = new Node(value);
+		if(this.head == null) {
+			this.head = new Node(value);
 			return;
 		}
 
@@ -18,7 +18,7 @@ public class LinkedList<T> {
 
 	private Node findTail() {
 
-		Node tail = head;
+		Node tail = this.head;
 
 		while(tail.next != null) {
 			tail = tail.next;
@@ -33,7 +33,17 @@ public class LinkedList<T> {
 	 */
 	public void remove(T value) {
 
-		Node current = head;
+		if(this.head.value.equals(value)) {
+			this.head = null;
+			return;
+		}
+
+		if(this.head.next == null) {
+			// Don't remove anything
+			return;
+		}
+
+		Node current = this.head;
 		Node previous = null;
 
 		while(current.value != value) {
@@ -51,19 +61,69 @@ public class LinkedList<T> {
 
 	private void removeHead() {
 
-		if (head.next == null) {
-			head = null;
+		if (this.head.next == null) {
+			this.head = null;
 			return;
 		}
 
-		head = head.next;
+		this.head = this.head.next;
+	}
+
+	public void distinct(T value) {
+
+		Node found = find(value);
+
+		if(found == null) {
+			return;
+		}
+
+		Node prev = found;
+		Node curr = found.next;
+
+		while(curr != null) {
+
+			if(curr.value.equals(value)) {
+				prev.next = curr.next;
+				curr = curr.next;
+				continue;
+			}
+
+			curr = curr.next;
+		}
+	}
+
+	private Node findFromNode(Node from, T value) {
+
+		if(from.value.equals(value)) {
+			return from;
+		}
+
+		Node next = from.next;
+
+		while(next != null) {
+			if(next.value.equals(value)) {
+				return next;
+			}
+			next = next.next;
+		}
+
+		return next;
+	}
+
+	private Node find(T value) {
+
+		return findFromNode(this.head, value);
 	}
 
 	public void printAllValues() {
 
-		System.out.print(head.value);
+		if(head == null) {
+			return;
+		}
 
-		Node next = head.next;
+		System.out.print(this.head.value);
+
+		Node next = this.head.next;
 
 		while(next != null) {
 

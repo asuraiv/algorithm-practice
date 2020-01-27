@@ -1,6 +1,6 @@
 package com.asuraiv.algorithm.linkedlist;
 
-public class TestLinkedList {
+public class BasicTest {
 
 	public static void main(String[] args) {
 
@@ -31,12 +31,25 @@ public class TestLinkedList {
 
 		list.printAllValues(); // #3
 
+		list = new LinkedList<Integer>() {
+			{
+				{
+					add(0);
+				}
+			}
+		};
+
+		list.remove(0);
+
+		list.printAllValues(); // #4
+
 		/*
 			Output:
 
 			#1: 0 -> 1 -> 2 -> 3 -> 3 -> 3 -> 4 -> 5
 			#2: 0 -> 1 -> 2 -> 3 -> 3 -> 4 -> 5
 			#3: 0 -> 1 -> 2 -> 3 -> 4 -> 5
+			#4:
 		 */
 	}
 }
