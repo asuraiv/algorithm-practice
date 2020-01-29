@@ -1,4 +1,4 @@
-package com.asuraiv.algorithm.linkedlist;
+package com.asuraiv.algorithm.datastructure.linkedlist;
 
 public class BasicTest {
 

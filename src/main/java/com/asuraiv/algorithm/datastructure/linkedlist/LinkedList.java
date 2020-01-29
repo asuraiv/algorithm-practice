@@ -1,30 +1,30 @@
-package com.asuraiv.algorithm.linkedlist;
+package com.asuraiv.algorithm.datastructure.linkedlist;
 
 public class LinkedList<T> {
 
 	private Node head;
+	private Node tail;
 
 	public void add(T value) {
 
 		if(this.head == null) {
-			this.head = new Node(value);
+			Node initialNode = new Node(value);
+			this.head = initialNode;
+			this.tail = initialNode;
 			return;
 		}
 
-		Node tail = findTail();
-
-		tail.next = new Node(value);
+		appendToTail(value);
 	}
 
-	private Node findTail() {
+	private void appendToTail(T value) {
 
-		Node tail = this.head;
+		Node appendedNode = new Node(value);
 
-		while(tail.next != null) {
-			tail = tail.next;
-		}
+		appendedNode.prev = this.tail;
 
-		return tail;
+		this.tail.next = appendedNode;
+		this.tail = appendedNode;
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class LinkedList<T> {
 	public void remove(T value) {
 
 		if(this.head.value.equals(value)) {
-			this.head = null;
+			this.head = head.next;
 			return;
 		}
 
@@ -44,29 +44,14 @@ public class LinkedList<T> {
 		}
 
 		Node current = this.head;
-		Node previous = null;
 
+		// find node for given value
 		while(current.value != value) {
-			previous = current;
 			current = current.next;
 		}
 
-		if(previous == null) {
-			removeHead();
-			return;
-		}
-
-		previous.next = current.next;
-	}
-
-	private void removeHead() {
-
-		if (this.head.next == null) {
-			this.head = null;
-			return;
-		}
-
-		this.head = this.head.next;
+		current.prev.next = current.next;
+		current.next.prev = current.prev;
 	}
 
 	public void distinct(T value) {
@@ -140,6 +125,7 @@ public class LinkedList<T> {
 
 		T value;
 		Node next;
+		Node prev;
 
 		Node(T value) {
 			this.value = value;
