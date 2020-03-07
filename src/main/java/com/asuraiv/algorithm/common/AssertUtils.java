@@ -1,7 +1,5 @@
 package com.asuraiv.algorithm.common;
 
-import java.util.List;
-
 public class AssertUtils {
 
 	public static void assertArrayEqualWithOrder(int[] expected, int[] actual) {
