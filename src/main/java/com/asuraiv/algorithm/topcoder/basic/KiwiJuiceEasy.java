@@ -2,6 +2,9 @@ package com.asuraiv.algorithm.topcoder.basic;
 
 import org.junit.Test;
 
+/*
+	SRM478, Div 2, Level 1
+ */
 public class KiwiJuiceEasy {
 
 	public int[] thePouring(int[] capacities, int[] bottles, int[] fromId, int[] toId) {
