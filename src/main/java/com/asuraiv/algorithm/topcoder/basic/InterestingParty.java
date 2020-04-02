@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class InterestingParty {
 
 
-	public int bestInvitation(String[] first, String[] second) {
+	int bestInvitation(String[] first, String[] second) {
 
 		Map<String, Integer> countMap = new HashMap<>();
 

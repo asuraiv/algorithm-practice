@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class KiwiJuiceEasy {
 
-	public int[] thePouring(int[] capacities, int[] bottles, int[] fromId, int[] toId) {
+	int[] thePouring(int[] capacities, int[] bottles, int[] fromId, int[] toId) {
 
 		for(int i = 0; i < fromId.length; i++) {
 

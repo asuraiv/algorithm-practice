@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
  */
 public class InterestingDigits {
 
-	public int[] digits(int base) {
+	int[] digits(int base) {
 
 		List<Integer> digits = new ArrayList<>();
 

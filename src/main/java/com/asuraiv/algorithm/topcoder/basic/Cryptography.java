@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
  */
 public class Cryptography {
 
-	public long encrypt(int[] numbers) {
+	long encrypt(int[] numbers) {
 
 		long max = 0L;
 
