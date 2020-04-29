@@ -2,8 +2,9 @@ package com.asuraiv.algorithm.greedy;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedList;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -12,15 +13,13 @@ public class Accounts {
 
 	int solution(int limit, int[] bankbook) {
 
-		LinkedList<Integer> list = new LinkedList<>();
+		List<Integer> list = new ArrayList<>();
 
 		for (int val : bankbook) {
 			list.add(val);
 		}
 
 		list.sort(Comparator.reverseOrder());
-
-		int answer = bankbook.length;
 
 		int[] sorted = list.stream().mapToInt(v -> v).toArray();
 
@@ -33,7 +32,6 @@ public class Accounts {
 			}
 
 			int curr = val;
-			answer--;
 
 			for (int j = i + 1; j < sorted.length; j++) {
 
@@ -52,6 +50,14 @@ public class Accounts {
 			}
 		}
 
+		int answer = 0;
+
+		for (int val : sorted) {
+			if(val > 0) {
+				answer++;
+			}
+		}
+
 		return answer;
 	}
 
@@ -59,5 +65,17 @@ public class Accounts {
 	public void test() {
 
 		assertThat(solution(1000, new int[]{800, 400, 200, 500, 300, 700}), is(3));
+	}
+
+	@Test
+	public void testCase2() {
+
+		assertThat(solution(10, new int[]{1,2,3,3,3,8}), is(2));
+	}
+
+	@Test
+	public void testCase3() {
+
+		assertThat(solution(1, new int[]{0, 0, 0, 0, 0}), is(1));
 	}
 }
